@@ -1,0 +1,41 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.image {
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+
+.name {
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+
+.price {
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.stepsButton, .buyButton {
+    border-radius: 10px;
+    height: 40px;
+    line-height: 16px;
+    vertical-align: middle;
+    font-size: 16px;
+
+}
+
+.buyButton {
+    background: whitesmoke;
+    color: #6B6B6B;
+    border: 3px solid rgba(15, 246, 22, 0.96);
+}
+
+.stepsButton {
+    color: whitesmoke;
+    background: #6B6B6B;
+    border: 3px solid whitesmoke;
+}
