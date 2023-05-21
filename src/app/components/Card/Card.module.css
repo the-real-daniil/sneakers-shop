@@ -31,11 +31,11 @@
 .buyButton {
     background: whitesmoke;
     color: #6B6B6B;
-    border: 3px solid rgba(15, 246, 22, 0.96);
+    border: 2px solid rgba(15, 246, 22, 0.96);
 }
 
 .stepsButton {
     color: whitesmoke;
     background: #6B6B6B;
-    border: 3px solid whitesmoke;
+    border: 2px solid whitesmoke;
 }
