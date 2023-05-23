@@ -3,7 +3,7 @@
 import Script from 'next/script';
 import {Card} from './components/Card';
 import styles from './page.module.css'
-import {getSneakers, getUserSneakers, UserSneaker, Sneaker, addSneakerToUser} from "./api";
+import {getSneakers, getUserSneakers, UserSneaker, Sneaker, addSneakerToUser, createInvoiceLink} from "./api";
 import {useState, useEffect} from "react";
 
 export default function Home() {
@@ -21,10 +21,19 @@ export default function Home() {
         }
     }
 
-    const onClickBuyButton = (sneakerId: number) => {
-        const userId = Telegram.WebApp.initDataUnsafe.user?.id;
-        if (userId) {
-            addSneakerToUser(userId, sneakerId).then(data => setUserSneakers(data));
+    const onClickBuyButton = async (sneakerId: number) => {
+        try {
+            const {name, price} = sneakers[sneakerId];
+            const invoiceLink = await createInvoiceLink([{
+                label: name,
+                amount: parseInt(price),
+            }])
+            if (invoiceLink) {
+                // @ts-ignore
+                Telegram.WebApp.openInvoice(invoiceLink);
+            }
+        } catch (err) {
+            console.error(err)
         }
     }
 

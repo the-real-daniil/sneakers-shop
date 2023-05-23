@@ -43,3 +43,23 @@ export const addSneakerToUser = async (userId: number, sneakerId: number): Promi
 
     return res.json();
 }
+
+type Price = {
+    label: string;
+    amount: number;
+}
+
+export const createInvoiceLink = async (prices: Price[]) => {
+    const res = await fetch(`${BASE_API_URL}/createInvoiceLink`, {
+        method: 'POST',
+        body: JSON.stringify({
+            prices,
+        }),
+    });
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data');
+    }
+
+    return res.json();
+}
