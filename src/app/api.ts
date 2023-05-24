@@ -50,7 +50,7 @@ type Price = {
 }
 
 export const createInvoiceLink = async (prices: Price[]) => {
-    const res = await fetch(`${BASE_API_URL}/createInvoiceLink`, {
+    const res = await fetch(`${BASE_API_URL}/invoiceLink`, {
         method: 'POST',
         body: JSON.stringify({
             prices,
