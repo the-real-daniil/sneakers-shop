@@ -26,7 +26,7 @@ export default function Home() {
             const {name, price} = sneakers[sneakerId];
             const invoiceLink = await createInvoiceLink([{
                 label: name,
-                amount: parseInt(price),
+                amount: price,
             }])
             if (invoiceLink) {
                 // @ts-ignore
