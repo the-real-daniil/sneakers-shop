@@ -3,7 +3,7 @@ const BASE_API_URL = process.env.NODE_ENV === 'production' ? 'https://sneakers-a
 export type Sneaker = {
     id: number;
     name: string;
-    price: string;
+    price: number;
     image: string;
 }
 
