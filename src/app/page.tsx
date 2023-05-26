@@ -24,13 +24,13 @@ export default function Home() {
     const onClickBuyButton = async (sneakerId: number) => {
         try {
             const {name, price} = sneakers[sneakerId];
-            const invoiceLink = await createInvoiceLink([{
+            const {link} = await createInvoiceLink([{
                 label: name,
                 amount: price,
             }])
-            if (invoiceLink) {
+            if (link) {
                 // @ts-ignore
-                Telegram.WebApp.openInvoice(invoiceLink);
+                Telegram.WebApp.openInvoice(link);
             }
         } catch (err) {
             console.error(err)
