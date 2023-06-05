@@ -1,5 +1,3 @@
-const BASE_API_URL = process.env.NODE_ENV === 'production' ? 'https://sneakers-api-132b.onrender.com' : 'http://localhost:8001';
-
 export type Sneaker = {
     id: number;
     name: string;
@@ -8,7 +6,7 @@ export type Sneaker = {
 }
 
 export const getSneakers = async (): Promise<Record<string, Sneaker>> => {
-    const res = await fetch(`${BASE_API_URL}/sneakers`);
+    const res = await fetch(`${process.env.BASE_API_URL}/sneakers`);
 
     if (!res.ok) {
         throw new Error('Failed to fetch data');
@@ -23,7 +21,7 @@ export type UserSneaker = {
 }
 
 export const getUserSneakers = async (userId: number): Promise<Record<string, UserSneaker>> => {
-    const res = await fetch(`${BASE_API_URL}/users/${userId}/sneakers`);
+    const res = await fetch(`${process.env.BASE_API_URL}/users/${userId}/sneakers`);
 
     if (!res.ok) {
         throw new Error('Failed to fetch data');
@@ -33,7 +31,7 @@ export const getUserSneakers = async (userId: number): Promise<Record<string, Us
 }
 
 export const addSneakerToUser = async (userId: number, sneakerId: number): Promise<Record<string, UserSneaker>> => {
-    const res = await fetch(`${BASE_API_URL}/users/${userId}/sneakers/${sneakerId}`, {
+    const res = await fetch(`${process.env.BASE_API_URL}/users/${userId}/sneakers/${sneakerId}`, {
         method: 'POST',
     });
 
@@ -50,7 +48,7 @@ type Price = {
 }
 
 export const createInvoiceLink = async (prices: Price[]) => {
-    const res = await fetch(`${BASE_API_URL}/invoiceLink`, {
+    const res = await fetch(`${process.env.BASE_API_URL}/invoiceLink`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
