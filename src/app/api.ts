@@ -42,19 +42,14 @@ export const addSneakerToUser = async (userId: number, sneakerId: number): Promi
     return res.json();
 }
 
-type Price = {
-    label: string;
-    amount: number;
-}
-
-export const createInvoiceLink = async (prices: Price[]) => {
+export const createInvoiceLink = async (sneakerId: number) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/invoiceLink`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            prices,
+            sneakerId,
         }),
     });
 

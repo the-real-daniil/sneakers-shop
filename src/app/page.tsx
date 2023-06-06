@@ -12,8 +12,6 @@ const INVOICE_STATUS_TYPES = {
     PENDING: 'pending'
 };
 
-const rubToCents = (value: number) =>  value * 100;
-
 export default function Home() {
     const [userSneakers, setUserSneakers] = useState<undefined | Record<string, UserSneaker>>(undefined)
     const [sneakers, setSneakers] = useState<Record<string, Sneaker>>({})
@@ -32,10 +30,8 @@ export default function Home() {
     const onClickBuyButton = async (sneakerId: number) => {
         try {
             const {name, price} = sneakers[sneakerId];
-            const {link} = await createInvoiceLink([{
-                label: name,
-                amount: rubToCents(price),
-            }])
+            const {link} = await createInvoiceLink(sneakerId)
+
             if (link) {
                 // @ts-ignore
                 Telegram.WebApp.openInvoice(link, status => {
