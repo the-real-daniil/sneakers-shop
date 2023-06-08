@@ -29,7 +29,6 @@ export default function Home() {
 
     const onClickBuyButton = async (sneakerId: number) => {
         try {
-            const {name, price} = sneakers[sneakerId];
             const {link} = await createInvoiceLink(sneakerId)
 
             if (link) {
