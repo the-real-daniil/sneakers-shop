@@ -22,6 +22,7 @@ export default function Home() {
 
     const onLoadTelegram = () => {
         const userId = Telegram.WebApp.initDataUnsafe.user?.id;
+
         if (userId) {
             getUserSneakers(userId).then(data => setUserSneakers(data));
         }

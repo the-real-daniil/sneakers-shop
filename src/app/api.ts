@@ -30,18 +30,6 @@ export const getUserSneakers = async (userId: number): Promise<Record<string, Us
     return res.json();
 }
 
-export const addSneakerToUser = async (userId: number, sneakerId: number): Promise<Record<string, UserSneaker>> => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/users/${userId}/sneakers/${sneakerId}`, {
-        method: 'POST',
-    });
-
-    if (!res.ok) {
-        throw new Error('Failed to fetch data');
-    }
-
-    return res.json();
-}
-
 export const createInvoiceLink = async (sneakerId: number) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/invoiceLink`, {
         method: 'POST',
